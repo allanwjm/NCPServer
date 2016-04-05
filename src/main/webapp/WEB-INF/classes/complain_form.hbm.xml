@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="edu.sysu.ncpserver.model">
+    <class name="ComplainForm" table="complain_form">
+        <id name="formId" column="form_id"/>
+        <property name="devId" column="dev_id"/>
+        <property name="devType" column="dev_type"/>
+        <property name="date"/>
+        <property name="averageIntensity" column="average_intensity"/>
+        <property name="intensitiesJSON" column="intensities" type="string" length="4096"/>
+        <property name="coord"/>
+        <property name="autoAddress" column="auto_address"/>
+        <property name="autoLatitude" column="auto_latitude"/>
+        <property name="autoLongitude" column="auto_longitude"/>
+        <property name="autoAltitude" column="auto_altitude"/>
+        <property name="autoHorizontalAccuracy" column="auto_horizontal_accuracy"/>
+        <property name="autoVerticalAccuracy" column="auto_vertical_accuracy"/>
+        <property name="manualAddress" column="manual_address"/>
+        <property name="manualLatitude" column="manual_latitude"/>
+        <property name="manualLongitude" column="manual_longitude"/>
+        <property name="sfaType" column="sfa_type"/>
+        <property name="noiseType" column="noise_type"/>
+        <property name="comment" column="comment" length="4096"/>
+    </class>
+</hibernate-mapping>
