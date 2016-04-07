@@ -2,7 +2,7 @@ package edu.sysu.ncpserver.model;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import edu.sysu.ncpserver.utils.Config;
+import edu.sysu.ncpserver.Config;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -20,6 +20,7 @@ public class ComplainForm {
     ////////////////////////////////////////////////////////////////////////////////
     // Form information
     private Long formId;
+    private String platform;
     private String devId;
     private String devType;
     private Date date = new Date();
@@ -179,6 +180,14 @@ public class ComplainForm {
         this.formId = formId;
     }
 
+    public String getPlatform() {
+        return platform;
+    }
+
+    public void setPlatform(String platform) {
+        this.platform = platform;
+    }
+
     public String getDevId() {
         return devId;
     }
@@ -314,4 +323,5 @@ public class ComplainForm {
     public void setComment(String comment) {
         this.comment = comment;
     }
+
 }

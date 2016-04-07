@@ -1,9 +1,9 @@
 package edu.sysu.ncpserver.action;
 
 import com.opensymphony.xwork2.ActionSupport;
+import edu.sysu.ncpserver.HibernateFactory;
 import edu.sysu.ncpserver.model.ComplainForm;
 import edu.sysu.ncpserver.model.HeatMapPoint;
-import edu.sysu.ncpserver.utils.Hibernate;
 import org.hibernate.Session;
 
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ public class HeatMapAction extends ActionSupport {
     public String execute() throws Exception {
 
         // Select form list
-        Session session = Hibernate.openSession();
+        Session session = HibernateFactory.openSession();
         session.beginTransaction();
         List<ComplainForm> formList = session.createQuery("from edu.sysu.ncpserver.model.ComplainForm").list();
         session.getTransaction().commit();

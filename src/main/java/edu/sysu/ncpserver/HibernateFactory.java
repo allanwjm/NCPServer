@@ -1,4 +1,4 @@
-package edu.sysu.ncpserver.utils;
+package edu.sysu.ncpserver;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -9,7 +9,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 /**
  * Created by mura on 4/1/16
  */
-public class Hibernate {
+public class HibernateFactory {
 
     // Hibernate session factory. Singleton.
     private static SessionFactory sessionFactory;

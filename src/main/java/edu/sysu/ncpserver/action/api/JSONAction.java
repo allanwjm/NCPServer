@@ -1,5 +1,6 @@
 package edu.sysu.ncpserver.action.api;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
@@ -15,8 +16,7 @@ import java.util.TreeMap;
 @ParentPackage("json-default")
 @Results({
         @Result(name = ActionSupport.SUCCESS, type = "json", params = {"root", "jsonResult"}),
-        @Result(name = ActionSupport.ERROR, type = "redirectAction", location = "api/exception",
-                params = {"message", "${exceptionMessage}"})
+        @Result(name = ActionSupport.ERROR, type = "chain", location = "exception")
 })
 public abstract class JSONAction extends ActionSupport {
 
@@ -25,9 +25,6 @@ public abstract class JSONAction extends ActionSupport {
     ////////////////////////////////////////////////////////////////////////////////
     // Result JSON and getter
     private Map<String, Object> out = new TreeMap<>();
-
-    // Exception message
-    private String exceptionMessage;
 
     ////////////////////////////////////////////////////////////////////////////////
     // Struts2 Action execute()
@@ -38,7 +35,7 @@ public abstract class JSONAction extends ActionSupport {
             doExecute(out);
             return SUCCESS;
         } catch (ServerException e) {
-            exceptionMessage = e.getMessage();
+            ActionContext.getContext().getValueStack().set("errorMessage", e.getMessage());
         }
         return ERROR;
     }
@@ -51,9 +48,5 @@ public abstract class JSONAction extends ActionSupport {
     ////////////////////////////////////////////////////////////////////////////////
     public Map<String, Object> getJsonResult() {
         return out;
-    }
-
-    public String getExceptionMessage() {
-        return exceptionMessage;
     }
 }

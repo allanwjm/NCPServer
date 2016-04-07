@@ -5,6 +5,7 @@
 <hibernate-mapping package="edu.sysu.ncpserver.model">
     <class name="ComplainForm" table="complain_form">
         <id name="formId" column="form_id"/>
+        <property name="platform"/>
         <property name="devId" column="dev_id"/>
         <property name="devType" column="dev_type"/>
         <property name="date"/>

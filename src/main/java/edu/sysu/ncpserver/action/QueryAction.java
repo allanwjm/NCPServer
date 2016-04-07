@@ -1,8 +1,8 @@
 package edu.sysu.ncpserver.action;
 
 import com.opensymphony.xwork2.ActionSupport;
+import edu.sysu.ncpserver.HibernateFactory;
 import edu.sysu.ncpserver.model.ComplainForm;
-import edu.sysu.ncpserver.utils.Hibernate;
 import org.hibernate.Session;
 
 import java.util.List;
@@ -24,7 +24,7 @@ public class QueryAction extends ActionSupport {
     @Override
     public String execute() {
 
-        Session session = Hibernate.openSession();
+        Session session = HibernateFactory.openSession();
         session.beginTransaction();
         formList = session.createQuery("from edu.sysu.ncpserver.model.ComplainForm").list();
         session.getTransaction().commit();

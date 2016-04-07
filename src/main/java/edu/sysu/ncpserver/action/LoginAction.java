@@ -2,7 +2,6 @@ package edu.sysu.ncpserver.action;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import edu.sysu.ncpserver.utils.Config;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
 
@@ -10,7 +9,7 @@ import org.apache.struts2.convention.annotation.Results;
  * Created by mura on 3/29/16
  */
 @Results({
-        @Result(name = ActionSupport.SUCCESS, type = "redirectAction", location = "index")
+        @Result(name = ActionSupport.SUCCESS, type = "chain", location = "main")
 })
 public class LoginAction extends ActionSupport {
 
@@ -34,6 +33,7 @@ public class LoginAction extends ActionSupport {
     @Override
     public String execute() throws Exception {
 
+        /*
         // If this action is not called by submission of login form, return
         if (submit == null || !submit) {
             return INPUT;
@@ -55,6 +55,7 @@ public class LoginAction extends ActionSupport {
             errorMessage = "用户名或密码错误";
             return INPUT;
         }
+        */
 
         // Login success
         ActionContext.getContext().getSession().put("login", true);

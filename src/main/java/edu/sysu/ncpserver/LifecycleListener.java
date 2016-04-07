@@ -2,8 +2,6 @@ package edu.sysu.ncpserver; /**
  * Created by mura on 4/1/16.
  */
 
-import edu.sysu.ncpserver.utils.Hibernate;
-
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
@@ -30,7 +28,7 @@ public class LifecycleListener implements ServletContextListener {
          Application Server shuts down.
       */
         System.out.println("Stop!");
-        Hibernate.close();
+        HibernateFactory.close();
     }
 
 }

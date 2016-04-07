@@ -1,4 +1,4 @@
-package edu.sysu.ncpserver.utils;
+package edu.sysu.ncpserver;
 
 import java.io.FileInputStream;
 

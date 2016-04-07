@@ -1,6 +1,6 @@
 package edu.sysu.ncpserver.action.api;
 
-import edu.sysu.ncpserver.utils.Hibernate;
+import edu.sysu.ncpserver.HibernateFactory;
 import edu.sysu.ncpserver.model.ComplainForm;
 import org.hibernate.Session;
 
@@ -30,15 +30,8 @@ public class ComplainAction extends JSONAction {
 
         // Validate
         if (form.isValid()) {
-            // Save it
-            //ComplainFormDAO dao = new ComplainFormDAO();
-
-            // FIXME: Hibernate
-            /*
-            if (!dao.insert(form)) {
-                throw new ServerException("投诉表单写入数据库失败");
-            }*/
-            Session session = Hibernate.openSession();
+            // Save ComplainForm with Hibernate
+            Session session = HibernateFactory.openSession();
             session.beginTransaction();
             session.save(form);
             session.getTransaction().commit();
@@ -73,6 +66,14 @@ public class ComplainAction extends JSONAction {
     ////////////////////////////////////////////////////////////////////////////////
     // Getters and Setters
     ////////////////////////////////////////////////////////////////////////////////
+    public String getPlatform() {
+        return form.getPlatform();
+    }
+
+    public void setPlatform(String platform) {
+        form.setPlatform(platform);
+    }
+
     public String getDevId() {
         return form.getDevId();
     }

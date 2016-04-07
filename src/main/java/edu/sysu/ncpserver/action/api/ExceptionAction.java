@@ -1,5 +1,6 @@
 package edu.sysu.ncpserver.action.api;
 
+import com.opensymphony.xwork2.ActionContext;
 import org.apache.struts2.ServletActionContext;
 
 import java.util.Map;
@@ -9,26 +10,26 @@ import java.util.Map;
  */
 public class ExceptionAction extends JSONAction {
 
-    ////////////////////////////////////////////////////////////////////////////////
-    // Properites
-    ////////////////////////////////////////////////////////////////////////////////
-    // Exception message
-    private String message;
+    String error;
+
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
+    }
 
     @Override
     protected void doExecute(Map<String, Object> out) throws Exception {
+        String message;
+        if (error != null) {
+            message = error;
+        } else {
+            message = ActionContext.getContext().getValueStack().findString("errorMessage");
+        }
         out.put("error", message);
         ServletActionContext.getResponse().setStatus(500);
     }
 
-    ////////////////////////////////////////////////////////////////////////////////
-    // Getters and Setters
-    ////////////////////////////////////////////////////////////////////////////////
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
 }

@@ -67,7 +67,10 @@
       <column id="21" parent="2" name="comment">
         <data-type>varchar(4096)</data-type>
       </column>
-      <key id="22" parent="2" name="PRIMARY">
+      <column id="22" parent="2" name="platform">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <key id="23" parent="2" name="PRIMARY">
         <columns>form_id</columns>
         <primary>1</primary>
       </key>

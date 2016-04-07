@@ -3,6 +3,7 @@
         "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
+
     <display-name>Noise Complain Server</display-name>
 
     <!--Struts2 Filter-->
@@ -15,7 +16,8 @@
         <filter-name>struts2</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-    
+
+    <!--Lifecycle listener-->
     <listener>
         <listener-class>edu.sysu.ncpserver.LifecycleListener</listener-class>
     </listener>

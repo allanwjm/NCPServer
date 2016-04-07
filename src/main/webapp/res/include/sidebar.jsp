@@ -5,7 +5,7 @@
 <div class="col-sm-3 col-md-2 sidebar">
     <ul class="nav nav-sidebar">
         <li ${param.activeRow == 0 ? "class=\"active\"" : ""}>
-            <a href="index">
+            <a href="main">
                 <span class="glyphicon glyphicon-dashboard"></span>&nbsp; &nbsp;总览
             </a>
         </li>

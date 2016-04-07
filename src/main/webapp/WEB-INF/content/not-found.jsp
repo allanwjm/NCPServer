@@ -3,7 +3,7 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <html>
 <jsp:include page="/res/include/head.jsp">
-    <jsp:param name="subTitle" value=""/>
+    <jsp:param name="subTitle" value="404"/>
 </jsp:include>
 <body>
 <jsp:include page="/res/include/navbar.jsp"/>
@@ -14,7 +14,7 @@
         </jsp:include>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <%--Main body goes here--%>
-            Index
+            Error 404: Page not found!
         </div>
     </div>
 </div>

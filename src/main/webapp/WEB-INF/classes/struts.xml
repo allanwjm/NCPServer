@@ -16,4 +16,12 @@
     <!--Struts2 Convention Plugin-->
     <constant name="struts.convention.action.packages" value="edu.sysu.ncpserver.action"/>
 
+    <!--Default package-->
+    <package name="default" extends="struts-default">
+        <default-action-ref name="not-found-dispatcher"/>
+        <action name="not-found-dispatcher">
+            <result type="chain">not-found</result>
+        </action>
+    </package>
+
 </struts>
