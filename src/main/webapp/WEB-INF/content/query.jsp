@@ -6,6 +6,7 @@
     <jsp:param name="subTitle" value="投诉列表"/>
 </jsp:include>
 <body>
+<jsp:include page="/res/include/javascript.jsp"/>
 <jsp:include page="/res/include/navbar.jsp"/>
 <div class="container-fluid">
     <div class="row">
@@ -14,32 +15,51 @@
         </jsp:include>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <%--Main body goes here--%>
-                <table class="table table-striped table-hover">
-                    <thead>
-                    <tr>
-                        <th>序号</th>
-                        <th>投诉表单号</th>
-                        <th>投诉地点</th>
-                        <th>噪声类型</th>
-                        <th>声功能区</th>
-                        <th>描述信息</th>
+            <h3 class="page-header">噪声投诉列表&nbsp;
+                <small>点击查看详情</small>
+            </h3>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>投诉单号</th>
+                    <th>设备类型</th>
+                    <th>投诉地点</th>
+                    <th>噪声强度</th>
+                    <th>噪声类型</th>
+                    <th>声功能区</th>
+                </tr>
+                </thead>
+                <tbody>
+                <s:iterator value="formList" id="form" status="st">
+                    <s:if test="#session.complainForm.formId == #form.formId">
+                        <tr onclick="gotoDetail('<s:property
+                            value="#form.formId"/>')" style="cursor: pointer" class="info">
+                    </s:if>
+                    <s:else>
+                        <tr onclick="gotoDetail('<s:property value="#form.formId"/>')" style="cursor: pointer">
+                    </s:else>
+                    <td><s:property value="#st.count"/></td>
+                    <td><s:property value="#form.formId"/></td>
+                    <td><s:property value="#form.devType"/></td>
+                    <td><s:property value="#form.address"/></td>
+                    <td><s:property value="#form.averageIntensity"/></td>
+                    <td><s:property value="#form.noiseType"/></td>
+                    <td><s:property value="#form.sfaType"/></td>
                     </tr>
-                    </thead>
-                    <s:iterator value="formList" id="formId" status="st">
-                        <tr>
-                            <td><s:property value="#st.count"/></td>
-                            <td><s:property value="formId"/></td>
-                            <td><s:property value="address"/></td>
-                            <td><s:property value="noiseType"/></td>
-                            <td><s:property value="sfaType"/></td>
-                            <td><s:property value="comment"/></td>
-                        </tr>
-                    </s:iterator>
-                </table>
+                </s:iterator>
+                </tbody>
+                <script>
+                    function gotoDetail(formId) {
+                        window.location.href = "detail?formId=" + formId;
+                    }
+                </script>
+            </table>
         </div>
     </div>
 </div>
 <jsp:include page="/res/include/modal.jsp"/>
-<jsp:include page="/res/include/javascript.jsp"/>
 </body>
 </html>
+
+

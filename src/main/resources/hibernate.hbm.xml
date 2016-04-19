@@ -2,7 +2,10 @@
 <!DOCTYPE hibernate-mapping PUBLIC
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
 <hibernate-mapping package="edu.sysu.ncpserver.model">
+
+    <!--ComplainForm-->
     <class name="ComplainForm" table="complain_form">
         <id name="formId" column="form_id"/>
         <property name="platform"/>
@@ -25,4 +28,16 @@
         <property name="noiseType" column="noise_type"/>
         <property name="comment" column="comment" length="4096"/>
     </class>
+
+    <!--ComplainProgress-->
+    <class name="ComplainProgress" table="complain_progress">
+        <id name="progressId" column="progress_id"/>
+        <property name="formId" column="form_id"/>
+        <property name="date"/>
+        <property name="finished"/>
+        <property name="title"/>
+        <property name="comment" length="4096"/>
+        <property name="detailsJSON" length="4096"/>
+    </class>
+
 </hibernate-mapping>

@@ -9,69 +9,96 @@
     <database-model serializer="dbm" rdbms="MYSQL" format-version="2.5">
       <schema id="1" name="noise_complain"/>
       <table id="2" parent="1" name="complain_form"/>
-      <column id="3" parent="2" name="form_id">
+      <table id="3" parent="1" name="complain_progress"/>
+      <column id="4" parent="2" name="form_id">
         <mandatory>1</mandatory>
         <data-type>bigint(20)</data-type>
       </column>
-      <column id="4" parent="2" name="dev_id">
+      <column id="5" parent="2" name="platform">
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="5" parent="2" name="dev_type">
+      <column id="6" parent="2" name="dev_id">
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="6" parent="2" name="date">
+      <column id="7" parent="2" name="dev_type">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="8" parent="2" name="date">
         <data-type>datetime</data-type>
       </column>
-      <column id="7" parent="2" name="average_intensity">
+      <column id="9" parent="2" name="average_intensity">
         <data-type>double</data-type>
       </column>
-      <column id="8" parent="2" name="intensities">
+      <column id="10" parent="2" name="intensities">
         <data-type>varchar(4096)</data-type>
       </column>
-      <column id="9" parent="2" name="coord">
+      <column id="11" parent="2" name="coord">
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="10" parent="2" name="auto_address">
+      <column id="12" parent="2" name="auto_address">
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="11" parent="2" name="auto_latitude">
+      <column id="13" parent="2" name="auto_latitude">
         <data-type>double</data-type>
       </column>
-      <column id="12" parent="2" name="auto_longitude">
+      <column id="14" parent="2" name="auto_longitude">
         <data-type>double</data-type>
       </column>
-      <column id="13" parent="2" name="auto_altitude">
+      <column id="15" parent="2" name="auto_altitude">
         <data-type>double</data-type>
       </column>
-      <column id="14" parent="2" name="auto_horizontal_accuracy">
+      <column id="16" parent="2" name="auto_horizontal_accuracy">
         <data-type>double</data-type>
       </column>
-      <column id="15" parent="2" name="auto_vertical_accuracy">
+      <column id="17" parent="2" name="auto_vertical_accuracy">
         <data-type>double</data-type>
       </column>
-      <column id="16" parent="2" name="manual_address">
+      <column id="18" parent="2" name="manual_address">
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="17" parent="2" name="manual_latitude">
+      <column id="19" parent="2" name="manual_latitude">
         <data-type>double</data-type>
       </column>
-      <column id="18" parent="2" name="manual_longitude">
+      <column id="20" parent="2" name="manual_longitude">
         <data-type>double</data-type>
       </column>
-      <column id="19" parent="2" name="sfa_type">
+      <column id="21" parent="2" name="sfa_type">
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="20" parent="2" name="noise_type">
+      <column id="22" parent="2" name="noise_type">
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="21" parent="2" name="comment">
+      <column id="23" parent="2" name="comment">
         <data-type>varchar(4096)</data-type>
       </column>
-      <column id="22" parent="2" name="platform">
-        <data-type>varchar(255)</data-type>
-      </column>
-      <key id="23" parent="2" name="PRIMARY">
+      <key id="24" parent="2" name="PRIMARY">
         <columns>form_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="25" parent="3" name="progress_id">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="26" parent="3" name="form_id">
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="27" parent="3" name="date">
+        <data-type>datetime</data-type>
+      </column>
+      <column id="28" parent="3" name="finished">
+        <data-type>bit(1)</data-type>
+      </column>
+      <column id="29" parent="3" name="title">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="30" parent="3" name="comment">
+        <data-type>varchar(4096)</data-type>
+      </column>
+      <column id="31" parent="3" name="detailsJSON">
+        <data-type>varchar(4096)</data-type>
+      </column>
+      <key id="32" parent="3" name="PRIMARY">
+        <columns>progress_id</columns>
         <primary>1</primary>
       </key>
     </database-model>

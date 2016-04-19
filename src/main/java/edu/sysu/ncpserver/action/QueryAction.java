@@ -13,20 +13,24 @@ import java.util.List;
 public class QueryAction extends ActionSupport {
 
     ////////////////////////////////////////////////////////////////////////////////
-    // Action parameters
+    // Action Fields
     ////////////////////////////////////////////////////////////////////////////////
     // Queried ComplainForm list
     private List<ComplainForm> formList;
+
+    // Error Message
+    private String errorMessage;
 
     ////////////////////////////////////////////////////////////////////////////////
     // Struts2 Action execute()
     ////////////////////////////////////////////////////////////////////////////////
     @Override
+    @SuppressWarnings("unchecked")
     public String execute() {
 
         Session session = HibernateFactory.openSession();
         session.beginTransaction();
-        formList = session.createQuery("from edu.sysu.ncpserver.model.ComplainForm").list();
+        formList = session.createQuery("from ComplainForm").list();
         session.getTransaction().commit();
         session.close();
 
@@ -40,4 +44,11 @@ public class QueryAction extends ActionSupport {
         return formList;
     }
 
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
+    }
 }

@@ -51,10 +51,8 @@ public class ComplainForm {
     ////////////////////////////////////////////////////////////////////////////////
     // Check if this form contains all necessary information
     public boolean isValid() {
-
-        // Address
-        /*
-        if (getAddress() == null) {
+        // At least contains one Address
+        if (getAddress() == null || getAddress().length() == 0) {
             return false;
         }
         if (getLatitude() == null || getLatitude() == 0) {
@@ -62,19 +60,18 @@ public class ComplainForm {
         }
         if (getLongitude() == null || getLongitude() == 0) {
             return false;
-        }*/
-
-        // Device ID
+        }
+        // Device Information
         if (devId == null || devId.length() == 0) {
             return false;
         }
-
-        /*
+        if (platform == null || platform.length() == 0) {
+            return false;
+        }
         // Intensities
         if (intensities == null || intensities.length == 0) {
             return false;
-        }*/
-
+        }
         return true;
     }
 
@@ -178,6 +175,14 @@ public class ComplainForm {
 
     public void setFormId(Long formId) {
         this.formId = formId;
+    }
+
+    public String getFormIdString() {
+        return formId + "";
+    }
+
+    public void setFormIdString(String formIdStr) {
+        this.formId = Long.parseLong(formIdStr);
     }
 
     public String getPlatform() {

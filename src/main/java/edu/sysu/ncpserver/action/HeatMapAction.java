@@ -15,7 +15,7 @@ import java.util.List;
 public class HeatMapAction extends ActionSupport {
 
     ////////////////////////////////////////////////////////////////////////////////
-    // Action parameters
+    // Action Fields
     ////////////////////////////////////////////////////////////////////////////////
     // Queried ComplainForm list
     private List<HeatMapPoint> pointList;
@@ -29,6 +29,7 @@ public class HeatMapAction extends ActionSupport {
         // Select form list
         Session session = HibernateFactory.openSession();
         session.beginTransaction();
+        @SuppressWarnings("unchecked")
         List<ComplainForm> formList = session.createQuery("from edu.sysu.ncpserver.model.ComplainForm").list();
         session.getTransaction().commit();
         session.close();

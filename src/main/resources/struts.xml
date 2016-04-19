@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <!--Develope Mode Constants-->
+    <constant name="struts.enable.DynamicMethodInvocation" value="false"/>
+    <constant name="struts.i18n.reload" value="true"/>
+    <constant name="struts.devMode" value="true"/>
+    <constant name="struts.action.excludePattern" value="/res/.*?"/>
+
+    <!--Default package-->
+    <package name="web" extends="struts-default">
+        <default-action-ref name="not-found"/>
+
+        <action name="main" class="edu.sysu.ncpserver.action.MainAction">
+            <result name="success">WEB-INF/content/main.jsp</result>
+            <result name="login" type="chain">login</result>
+        </action>
+
+        <action name="login" class="edu.sysu.ncpserver.action.LoginAction">
+            <result name="input">WEB-INF/content/login.jsp</result>
+            <result name="success" type="redirectAction">main</result>
+        </action>
+
+        <action name="query" class="edu.sysu.ncpserver.action.QueryAction">
+            <result name="success">WEB-INF/content/query.jsp</result>
+        </action>
+
+        <action name="detail" class="edu.sysu.ncpserver.action.DetailAction">
+            <result name="success">WEB-INF/content/detail.jsp</result>
+            <result name="input" type="redirectAction">query?errorMessage=${error}</result>
+        </action>
+
+        <action name="logout" class="edu.sysu.ncpserver.action.LogoutAction">
+            <result name="login" type="redirectAction">login</result>
+        </action>
+
+        <action name="heat-map" class="edu.sysu.ncpserver.action.HeatMapAction">
+            <result name="success">WEB-INF/content/heat-map.jsp</result>
+        </action>
+
+        <action name="not-found" class="edu.sysu.ncpserver.action.NotFoundAction">
+            <result name="success">WEB-INF/content/not-found.jsp</result>
+            <result name="main" type="chain">main</result>
+        </action>
+
+    </package>
+
+    <!--JSON Api package-->
+    <package name="json" extends="json-default" namespace="/api">
+        <default-action-ref name="not-found"/>
+
+        <global-results>
+            <result name="success" type="json">
+                <param name="root">jsonResult</param>
+            </result>
+            <result name="error" type="chain">exception</result>
+        </global-results>
+
+        <action name="complain" class="edu.sysu.ncpserver.action.api.ComplainAction">
+        </action>
+
+        <action name="check-progress" class="edu.sysu.ncpserver.action.api.CheckProgressAction">
+        </action>
+
+        <action name="new-progress" class="edu.sysu.ncpserver.action.api.NewProgressAction">
+        </action>
+
+        <action name="exception" class="edu.sysu.ncpserver.action.api.ExceptionAction">
+        </action>
+
+        <action name="not-found" class="edu.sysu.ncpserver.action.api.NotFoundAction">
+        </action>
+
+        <action name="test" class="edu.sysu.ncpserver.action.api.TestAction">
+        </action>
+
+    </package>
+
+</struts>

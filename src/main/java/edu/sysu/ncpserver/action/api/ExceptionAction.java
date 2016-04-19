@@ -10,16 +10,15 @@ import java.util.Map;
  */
 public class ExceptionAction extends JSONAction {
 
+    ////////////////////////////////////////////////////////////////////////////////
+    // Action Fields
+    ////////////////////////////////////////////////////////////////////////////////
+    // Error message
     String error;
 
-    public String getError() {
-        return error;
-    }
-
-    public void setError(String error) {
-        this.error = error;
-    }
-
+    ////////////////////////////////////////////////////////////////////////////////
+    // doExecute()
+    ////////////////////////////////////////////////////////////////////////////////
     @Override
     protected void doExecute(Map<String, Object> out) throws Exception {
         String message;
@@ -32,4 +31,14 @@ public class ExceptionAction extends JSONAction {
         ServletActionContext.getResponse().setStatus(500);
     }
 
+    ////////////////////////////////////////////////////////////////////////////////
+    // Getters and Setters
+    ////////////////////////////////////////////////////////////////////////////////
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
+    }
 }

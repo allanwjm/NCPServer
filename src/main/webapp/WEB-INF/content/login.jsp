@@ -14,17 +14,9 @@
     <link href="${pageContext.request.contextPath}/res/css/login.css" rel="stylesheet">
 </head>
 <body>
-
-<%--Check if there is an errorMessage--%>
-<s:if test="errorMessage != null">
-    <%--Show errorMessage--%>
-    <script>
-        var showErrorMessage = true;
-    </script>
-</s:if>
-
+<jsp:include page="/res/include/javascript.jsp"/>
 <div class="container">
-    <form class="form-signin" method="post" action="login">
+    <s:form class="form-signin" method="post" action="login">
         <h2 class="form-signin-heading">中大噪声投诉中心</h2>
 
         <%--Username input--%>
@@ -40,27 +32,8 @@
         <%--Login Button--%>
         <input type="hidden" name="submit" value="true">
         <button class="btn btn-lg btn-primary btn-block" type="submit">登陆</button>
-    </form>
+    </s:form>
 </div>
-
-<jsp:include page="/res/include/javascript.jsp"/>
-
-<%--Modal: Error message--%>
-<div class="modal fade" id="errorMessageModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-                <h4 class="modal-title">登录失败</h4>
-            </div>
-            <div class="modal-body">
-                ${errorMessage}
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-            </div>
-        </div>
-    </div>
-</div>
+<jsp:include page="/res/include/modal.jsp"/>
 </body>
 </html>

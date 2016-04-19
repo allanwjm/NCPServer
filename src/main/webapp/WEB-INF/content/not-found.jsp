@@ -6,6 +6,7 @@
     <jsp:param name="subTitle" value="404"/>
 </jsp:include>
 <body>
+<jsp:include page="/res/include/javascript.jsp"/>
 <jsp:include page="/res/include/navbar.jsp"/>
 <div class="container-fluid">
     <div class="row">
@@ -14,11 +15,11 @@
         </jsp:include>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <%--Main body goes here--%>
-            Error 404: Page not found!
+            <h3 class="page-header">Error 404: 页面不存在!</h3>
+            <p class="text-info"><s:property value="lostURI"/></p>
         </div>
     </div>
 </div>
 <jsp:include page="/res/include/modal.jsp"/>
-<jsp:include page="/res/include/javascript.jsp"/>
 </body>
 </html>

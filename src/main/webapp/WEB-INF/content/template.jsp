@@ -6,6 +6,7 @@
     <jsp:param name="subTitle" value="#SubTitle#"/>
 </jsp:include>
 <body>
+<jsp:include page="/res/include/javascript.jsp"/>
 <jsp:include page="/res/include/navbar.jsp"/>
 <div class="container-fluid">
     <div class="row">
@@ -19,6 +20,5 @@
     </div>
 </div>
 <jsp:include page="/res/include/modal.jsp"/>
-<jsp:include page="/res/include/javascript.jsp"/>
 </body>
 </html>

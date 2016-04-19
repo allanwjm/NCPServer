@@ -5,7 +5,7 @@
     <div class="container">
         <%--Navigation header--%>
         <div class="navbar-header">
-            <a class="navbar-brand" href="index">中大噪声投诉中心</a>
+            <s:a class="navbar-brand" href="main">中大噪声投诉中心</s:a>
         </div>
 
         <%--Navigation bar--%>

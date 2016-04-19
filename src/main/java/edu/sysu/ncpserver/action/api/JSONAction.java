@@ -2,9 +2,6 @@ package edu.sysu.ncpserver.action.api;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.convention.annotation.ParentPackage;
-import org.apache.struts2.convention.annotation.Result;
-import org.apache.struts2.convention.annotation.Results;
 
 import java.util.Map;
 import java.util.TreeMap;
@@ -13,11 +10,6 @@ import java.util.TreeMap;
  * Created by mura on 3/29/16
  * This class is an abstract class for Actions to return JSON as result.
  */
-@ParentPackage("json-default")
-@Results({
-        @Result(name = ActionSupport.SUCCESS, type = "json", params = {"root", "jsonResult"}),
-        @Result(name = ActionSupport.ERROR, type = "chain", location = "exception")
-})
 public abstract class JSONAction extends ActionSupport {
 
     ////////////////////////////////////////////////////////////////////////////////

@@ -2,6 +2,7 @@ package edu.sysu.ncpserver.action.api;
 
 import edu.sysu.ncpserver.HibernateFactory;
 import edu.sysu.ncpserver.model.ComplainForm;
+import edu.sysu.ncpserver.model.ComplainProgress;
 import org.hibernate.Session;
 
 import java.util.Calendar;
@@ -14,9 +15,9 @@ import java.util.Map;
 public class ComplainAction extends JSONAction {
 
     ////////////////////////////////////////////////////////////////////////////////
-    // HTTP parameters
+    // ComplainForm instance
     ////////////////////////////////////////////////////////////////////////////////
-    // ComplainForm instance. Struts2 will get access to it by getters and setters.
+    // Struts2 can get access to it by getters and setters.
     private ComplainForm form = new ComplainForm();
 
     ////////////////////////////////////////////////////////////////////////////////
@@ -30,15 +31,25 @@ public class ComplainAction extends JSONAction {
 
         // Validate
         if (form.isValid()) {
+            // Return the form ID
+            out.put("formId", form.getFormId());
+
+            // Generate post progress
+            ComplainProgress progress = new ComplainProgress();
+            progress.attachToForm(form, 0);
+            progress.setDate(form.getDate());
+            progress.setTitle("投诉已提交");
+            progress.setComment("投诉成功提交至服务器, 等待处理...");
+            out.put("postProgress", progress.getJSONMap());
+
             // Save ComplainForm with Hibernate
             Session session = HibernateFactory.openSession();
             session.beginTransaction();
             session.save(form);
+            session.save(progress);
             session.getTransaction().commit();
             session.close();
 
-            // Return the form ID
-            out.put("formId", form.getFormId());
         } else {
             throw new ServerException("表单填写不完整, 无法受理");
         }
